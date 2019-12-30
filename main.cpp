@@ -11,7 +11,7 @@ public:
 	Stack(size_t new_capacity);
 	~Stack();
 
-	void CommandManager(istream& stream);
+	void CommandManager();
 	void Push(const T& item);
 	void Pop();
 	void SetSize(size_t new_capacity);
@@ -37,8 +37,8 @@ Stack<T>::~Stack(){
 }
 
 template<typename T>
-void Stack<T>::CommandManager(istream& stream){
-	for (std::string line; std::getline(stream, line); ) {
+void Stack<T>::CommandManager(){
+	for (std::string line; std::getline(cin, line); ) {
 		std::istringstream is(line);
 		std::string command;
 		is >> command;
