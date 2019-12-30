@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <sstream>
 
@@ -56,7 +56,7 @@ void Stack<T>::CommandManager(){
 		else if (command == "print") {
 			Print();
 		}
-		else {
+		else if (command.size() > 0){
 			std::cout << "error" << std::endl;
 		}
 	}
@@ -78,6 +78,7 @@ void Stack<T>::Pop(){
 		std::cout << "underflow" << std::endl;
 	}
 	else {
+		std::cout << values[_head];
 		--_head;
 	}
 }
