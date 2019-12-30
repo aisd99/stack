@@ -46,14 +46,20 @@ void Stack<T>::CommandManager() {
 			if (values == NULL) {
 				int new_size;
 				is >> new_size;
-				SetSize(new_size);
+				std::string add;
+				is >> add;
+				if (add != "") _ERROR_
+				else SetSize(new_size);
 			}
 			else _ERROR_
 		}
 		else if (command == "push") {
 			T new_item;
 			is >> new_item;
-			Push(new_item);
+			std::string add;
+			is >> add;
+			if (add != "") _ERROR_
+			else Push(new_item);
 		}
 		else if (line == command) {
 			if (command == "pop") {
