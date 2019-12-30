@@ -96,7 +96,7 @@ void Stack<T>::Pop() {
 		--_head;
 	}
 }
-
+/*
 template<typename T>
 void Stack<T>::SetSize(size_t new_capacity) {
 	if (new_capacity != _capacity) {
@@ -111,6 +111,12 @@ void Stack<T>::SetSize(size_t new_capacity) {
 		_capacity = new_capacity;
 		values = new_values;
 	}
+}
+*/
+template<typename T>
+void Stack<T>::SetSize(size_t new_capacity){
+	values = new T[new_capacity];
+	_capacity = new_capacity;
 }
 
 template<typename T>
