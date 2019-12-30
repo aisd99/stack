@@ -38,11 +38,13 @@ Stack<T>::~Stack() {
 
 template<typename T>
 void Stack<T>::CommandManager() {
+	bool notallocated = true;
 	for (std::string line; std::getline(std::cin, line); ) {
 		std::istringstream is(line);
 		std::string command;
 		is >> command;
 		if (command == "set_size") {
+			notallocated = false;
 			if (values == NULL) {
 				int new_size;
 				is >> new_size;
@@ -53,15 +55,16 @@ void Stack<T>::CommandManager() {
 			}
 			else _ERROR_
 		}
-		else if (command == "push") {
+		else if (!(notallocated)){			
+			if (command == "push") {
 			T new_item;
 			is >> new_item;
 			std::string add;
 			is >> add;
 			if (add != "") _ERROR_
 			else Push(new_item);
-		}
-		else if (line == command) {
+			}
+			else if (line == command) {
 			if (command == "pop") {
 				Pop();
 			}
@@ -71,6 +74,8 @@ void Stack<T>::CommandManager() {
 			else if (command.size() > 0) {
 				_ERROR_
 			}
+		}
+			else _ERROR_
 		}
 		else _ERROR_
 	}
