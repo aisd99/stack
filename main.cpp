@@ -2,6 +2,8 @@
 #include <string>
 #include <sstream>
 
+#define _ERROR_ std::cout << "error" << std::endl;
+
 template<typename T>
 class Stack {
 public:
@@ -9,7 +11,7 @@ public:
 	Stack(size_t new_capacity);
 	~Stack();
 
-	void CommandManager();
+	void CommandManager(istream& stream);
 	void Push(const T& item);
 	void Pop();
 	void SetSize(size_t new_capacity);
@@ -35,30 +37,36 @@ Stack<T>::~Stack(){
 }
 
 template<typename T>
-void Stack<T>::CommandManager(){
-	for (std::string line; std::getline(std::cin, line); ) {
+void Stack<T>::CommandManager(istream& stream){
+	for (std::string line; std::getline(stream, line); ) {
 		std::istringstream is(line);
 		std::string command;
 		is >> command;
 		if (command == "set_size") {
-			int new_size;
-			is >> new_size;
-			SetSize(new_size);
+			if (values == NULL) {
+				int new_size;
+				is >> new_size;
+				SetSize(new_size);
+			}
+			else _ERROR_
 		}
 		else if (command == "push") {
 			T new_item;
 			is >> new_item;
 			Push(new_item);
 		}
-		else if (command == "pop") {
-			Pop();
+		else if (line == command) {
+			if (command == "pop") {
+				Pop();
+			}
+			else if (command == "print") {
+				Print();
+			}
+			else if (command.size() > 0) {
+				_ERROR_
+			}
 		}
-		else if (command == "print") {
-			Print();
-		}
-		else if (command.size() > 0){
-			std::cout << "error" << std::endl;
-		}
+		else _ERROR_
 	}
 }
 
@@ -78,7 +86,7 @@ void Stack<T>::Pop(){
 		std::cout << "underflow" << std::endl;
 	}
 	else {
-		std::cout << values[_head];
+		std::cout << values[_head] << std::endl;
 		--_head;
 	}
 }
@@ -112,8 +120,9 @@ void Stack<T>::Print(){
 	std::cout << std::endl;
 }
 
+
 int main()
 {
-	Stack<int> stack;
+	Stack<string> stack;
 	stack.CommandManager();
 }
