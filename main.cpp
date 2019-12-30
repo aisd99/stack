@@ -68,16 +68,17 @@ void Stack<T>::CommandManager() {
 			else Push(new_item);
 			}
 			else if (line == command) {
-			if (command == "pop") {
-				Pop();
+				if (command == "pop") {
+					Pop();
+				}
+				else if (command == "print") {
+					Print();
+				}
+				else if (command.size() > 0) {
+					_ERROR_
+				}
 			}
-			else if (command == "print") {
-				Print();
-			}
-			else if (command.size() > 0) {
-				_ERROR_
-			}
-			}
+			else _ERROR_
 		}
 		else _ERROR_
 	}
