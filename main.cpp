@@ -119,9 +119,10 @@ void Stack<T>::Print() {
 		std::cout << "empty";
 	}
 	else {
-		for (int i = 0; i <= _head; ++i) {
+		for (int i = 0; i < _head; ++i) {
 			std::cout << values[i] << " ";
 		}
+		std::cout << values[_head] << " ";
 	}
 	std::cout << std::endl;
 }
