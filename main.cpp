@@ -122,7 +122,7 @@ void Stack<T>::Print() {
 		for (int i = 0; i < _head; ++i) {
 			std::cout << values[i] << " ";
 		}
-		std::cout << values[_head] << " ";
+		std::cout << values[_head];
 	}
 	std::cout << std::endl;
 }
