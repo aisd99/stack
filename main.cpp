@@ -43,6 +43,9 @@ void Stack<T>::CommandManager() {
 		std::istringstream is(line);
 		std::string command;
 		is >> command;
+		if (command.size() == 0) {
+			continue;
+		}
 		if (command == "set_size") {
 			notallocated = false;
 			if (values == NULL) {
@@ -74,8 +77,7 @@ void Stack<T>::CommandManager() {
 			else if (command.size() > 0) {
 				_ERROR_
 			}
-		}
-			else _ERROR_
+			}
 		}
 		else _ERROR_
 	}
