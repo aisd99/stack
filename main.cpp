@@ -23,22 +23,22 @@ private:
 };
 
 template<typename T>
-Stack<T>::Stack(){}
+Stack<T>::Stack() {}
 
 template<typename T>
-Stack<T>::Stack(size_t new_capacity){
+Stack<T>::Stack(size_t new_capacity) {
 	values = new T[new_capacity];
 	_capacity = new_capacity;
 }
 
 template<typename T>
-Stack<T>::~Stack(){
+Stack<T>::~Stack() {
 	delete[] values;
 }
 
 template<typename T>
-void Stack<T>::CommandManager(){
-	for (std::string line; std::getline(cin, line); ) {
+void Stack<T>::CommandManager() {
+	for (std::string line; std::getline(std::cin, line); ) {
 		std::istringstream is(line);
 		std::string command;
 		is >> command;
@@ -71,7 +71,7 @@ void Stack<T>::CommandManager(){
 }
 
 template<typename T>
-void Stack<T>::Push(const T& item){
+void Stack<T>::Push(const T& item) {
 	if (_head == _capacity - 1) {
 		std::cout << "overflow" << std::endl;
 	}
@@ -81,7 +81,7 @@ void Stack<T>::Push(const T& item){
 }
 
 template<typename T>
-void Stack<T>::Pop(){
+void Stack<T>::Pop() {
 	if (_head == -1) {
 		std::cout << "underflow" << std::endl;
 	}
@@ -92,7 +92,7 @@ void Stack<T>::Pop(){
 }
 
 template<typename T>
-void Stack<T>::SetSize(size_t new_capacity){
+void Stack<T>::SetSize(size_t new_capacity) {
 	if (new_capacity != _capacity) {
 		T* new_values = new T[new_capacity];
 		for (int i = 0; i < _head && i < new_capacity; ++i) {
@@ -108,7 +108,7 @@ void Stack<T>::SetSize(size_t new_capacity){
 }
 
 template<typename T>
-void Stack<T>::Print(){
+void Stack<T>::Print() {
 	if (_head == -1) {
 		std::cout << "empty";
 	}
@@ -123,6 +123,6 @@ void Stack<T>::Print(){
 
 int main()
 {
-	Stack<string> stack;
+	Stack<std::string> stack;
 	stack.CommandManager();
 }
